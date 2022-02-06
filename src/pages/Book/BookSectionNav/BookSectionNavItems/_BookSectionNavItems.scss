@@ -1,0 +1,51 @@
+.book-sections-nav-items {
+    display: flex;
+    justify-content: center;
+
+    gap: 0 10px;
+
+    .book-sections-nav__btn {
+        &:first-child {
+            border-color: #9a79e1;
+
+            &:hover {
+                background-color: #9a79e1;
+            }
+        }
+        &:nth-child(2) {
+            border-color: #db7cf5;
+
+            &:hover {
+                background-color: #db7cf5;
+            }
+        }
+        &:nth-child(3) {
+            border-color: #7552bf;
+
+            &:hover {
+                background-color: #7552bf;
+            }
+        }
+        &:nth-child(4) {
+            border-color: #6979f8;
+
+            &:hover {
+                background-color: #6979f8;
+            }
+        }
+        &:nth-child(5) {
+            border-color: #aa5ddb;
+
+            &:hover {
+                background-color: #aa5ddb;
+            }
+        }
+        &:last-child {
+            border-color: #79afe1;
+
+            &:hover {
+                background-color: #79afe1;
+            }
+        }
+    }
+}

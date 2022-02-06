@@ -1,0 +1,14 @@
+.book-sections-nav-hard {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+
+    .book-sections-nav__btn {
+        border-color: #e17979;
+
+        &:hover {
+            background-color: #e17979;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.book-cards {
+    padding: 30px 20px;
+
+    background-color: rgba(154, 121, 225, 0.5);
+    border-radius: 15px;
+}
+
+.book-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+}

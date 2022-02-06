@@ -1,0 +1,45 @@
+.book-card-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.book-card-footer__btn {
+    padding: 6px 30px;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    border-radius: 5px;
+}
+
+.book-card-footer-audio__btn {
+    width: 35px;
+    height: 35px;
+
+    border: 1px solid #9A79E1;
+
+    background-image: url('../../../../../assets/svg/book-audio.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &:hover {
+        background-color: #9A79E1;
+    }
+}
+
+.book-card-footer-hard__btn {
+    border: 1px solid #e17979;
+
+    &:hover {
+        background-color: #e17979;
+    }
+}
+
+.book-card-footer-learn__btn {
+    border: 1px solid #79e196;
+
+    &:hover {
+        background-color: #79e196;
+    }
+}
