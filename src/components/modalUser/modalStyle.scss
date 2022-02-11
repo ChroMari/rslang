@@ -44,6 +44,13 @@
   position: absolute;
   right: 20px;
   top: 20px;
+
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+
+  &:hover{
+    transform: rotate(360deg);
+  }
 }
 
 .modal__form {
@@ -94,7 +101,6 @@
   outline: none;
   background: transparent;
   border: none;
-  cursor: pointer;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
@@ -102,4 +108,17 @@
   margin: auto;
   margin-top: 25px;
   display: block;
+
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.modal__error {
+  margin: -10px 0 15px 0;
+  text-align: center;
+  color: #FFFFFF;
 }
