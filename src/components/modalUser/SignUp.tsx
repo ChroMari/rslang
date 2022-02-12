@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCreateUser, toggleTypeModal} from "../../redux/slices/userSlice";
-import {useState} from "react";
+import React, {useState} from "react";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -9,27 +9,18 @@ const SignUp = () => {
   const [userData, setUserData] = useState({name: '', email: '', password: '',});
   const [errorInput, setErrorInput] = useState({name: false, email: false, password: false});
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setErrorInput({name: false, email: false, password: false});
 
-    if (userData.email && userData.password && userData.name) {
-      // отправляем данные на регистрацию
-      // @ts-ignore
+    const nameError = !userData.name || (userData.name.length > 16);
+    const emailError = !userData.email;
+    const passwordError = (!userData.password || (userData.password.length < 7));
+
+    if (!nameError && !emailError && !passwordError) {
       dispatch(fetchCreateUser(userData));
-    } else {
-
-      if (userData.name.length === 0 || userData.name.length > 15) {
-        setErrorInput({...errorInput, name: true});
-      }
-
-      if (!userData.email) setErrorInput({...errorInput, email: true});
-      if (!userData.password || userData.password && userData.password.length < 8) {
-        setErrorInput({...errorInput, password: true});
-      }
-
     }
 
+    setErrorInput({name: nameError, email: emailError, password: passwordError});
   };
 
   const handleClick = () => {
@@ -37,9 +28,13 @@ const SignUp = () => {
   }
 
   const handleChangeInput = (value: string, type: string) => {
-    if (type === 'name') setUserData({...userData, name: value});
-    else if (type === 'email') setUserData({...userData, email: value});
-    else if (type === 'password') setUserData({...userData, password: value});
+    if (type === 'name') {
+      setUserData({...userData, name: value});
+    } else if (type === 'email') {
+      setUserData({...userData, email: value});
+    } else if (type === 'password') {
+      setUserData({...userData, password: value});
+    }
   }
 
 
@@ -57,7 +52,7 @@ const SignUp = () => {
         />
 
         {
-          errorInput.name && <p className="modal__error">Укажите логин с длиной не больше 15 символов.</p>
+          errorInput.name && <p className="modal__error-input">Укажите логин с длиной не больше 15 символов.</p>
         }
 
         <input className="modal__input"
@@ -70,7 +65,7 @@ const SignUp = () => {
         />
 
         {
-          errorInput.email && <p className="modal__error">Укажите свою почту.</p>
+          errorInput.email && <p className="modal__error-input">Укажите свою почту.</p>
         }
 
         <input className="modal__input"
@@ -83,18 +78,19 @@ const SignUp = () => {
         />
 
         {
-          errorInput.password && <p className="modal__error">Укажите пароль больше 8 символов.</p>
+          errorInput.password && <p className="modal__error-input">Укажите пароль больше 8 символов.</p>
+        }
+
+        {
+          modalState.error && <p className="modal__error">Неверно заполненные данные.</p>
         }
 
         <button className="modal__button"
                 onClick={handleSubmit}
-                type="submit">создать аккаунт</button>
+                type="submit">создать аккаунт
+        </button>
 
       </form>
-
-      {
-        modalState.error && <p className="modal__error">Неверно заполненные данные.</p>
-      }
 
       <button className="modal__button-switch" onClick={handleClick}>Авторизация</button>
     </div>

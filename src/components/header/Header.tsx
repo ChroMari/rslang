@@ -31,7 +31,7 @@ const Header = () => {
         {
           (!userState.userToken) ?
             <ButtonOpenApp openModal={handleClickOpen}/> :
-            <ButtonCloseApp closeUser={handleClickClose}/>
+            <ButtonCloseApp userName={userState.userName} closeUser={handleClickClose}/>
         }
 
       </div>

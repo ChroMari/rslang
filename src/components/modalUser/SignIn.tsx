@@ -1,33 +1,34 @@
-import {useState} from "react";
+import React, {Fragment, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSignUser, toggleTypeModal} from "../../redux/slices/userSlice";
 
+const minLengthPassword = 7;
+
 const SignIn = () => {
   const [userData, setUserData] = useState({email: '', password: '',});
+  const [errorInput, setErrorInput] = useState({email: false, password: false});
   const dispatch = useDispatch();
   const modalState = useSelector((state: any) => state.user);
-  const [errorInput, setErrorInput] = useState({email: false, password: false});
 
   const handleChange = (value: string, type: string) => {
-    if (type === 'email') setUserData({...userData, email: value});
-    else if (type === 'password') setUserData({...userData, password: value});
+    if (type === 'email') {
+      setUserData({...userData, email: value});
+    } else if (type === 'password') {
+      setUserData({...userData, password: value});
+    }
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (userData.email && userData.password && userData.password.length > 8) {
-      // @ts-ignore
+    const emailError = !userData.email;
+    const passwordError = (!userData.password || (userData.password.length < minLengthPassword));
+
+    if (!emailError && !passwordError) {
       dispatch(fetchSignUser(userData));
-      setErrorInput({email: false, password: false});
     }
 
-    else {
-      if (!userData.email) setErrorInput({...errorInput, email: true});
-      if (!userData.password || userData.password && userData.password.length < 8) {
-        setErrorInput({...errorInput, password: true});
-      }
-    }
+    setErrorInput({email: emailError, password: passwordError});
   };
 
   const handleClick = () => {
@@ -35,7 +36,7 @@ const SignIn = () => {
   }
 
   return (
-    <div>
+    <Fragment>
       <h2 className="modal__title">Авторизация пользователя</h2>
       <form className="modal__form">
         <input className="modal__input"
@@ -43,11 +44,12 @@ const SignIn = () => {
                placeholder="Электронная почта"
                value={userData.email}
                onChange={(event) => {
-                 handleChange(event.target.value, 'email');
+                 const {value} = event.target;
+                 handleChange(value, 'email');
                }}/>
 
         {
-          errorInput.email && <p className="modal__error">Укажите вашу почту.</p>
+          errorInput.email && <p className="modal__error-input">Укажите вашу почту.</p>
         }
 
         <input className="modal__input"
@@ -55,11 +57,12 @@ const SignIn = () => {
                placeholder="Пароль"
                value={userData.password}
                onChange={(event) => {
-                 handleChange(event.target.value, 'password');
+                 const {value} = event.target;
+                 handleChange(value, 'password');
                }}/>
 
         {
-          errorInput.password && <p className="modal__error">Укажите пароль больше 8 символов.</p>
+          errorInput.password && <p className="modal__error-input">Укажите ваш пароль.</p>
         }
 
         {
@@ -73,7 +76,7 @@ const SignIn = () => {
 
       <button className="modal__button-switch"
               onClick={handleClick}>Зарегистрироваться</button>
-    </div>
+    </Fragment>
   )
 };
 

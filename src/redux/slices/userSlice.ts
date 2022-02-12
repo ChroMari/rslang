@@ -14,7 +14,7 @@ import {URL_API_SIGNIN, URL_API_USERS} from "../../constants/Url";
 
 export const fetchSignUser = createAsyncThunk(
   'user/fetchSignUser',
-  async (user, {rejectWithValue, dispatch}) => {
+  async (user: {email: string, password: string}) => {
 
       const createTokenData = await fetch(URL_API_SIGNIN,{
         method: 'POST',
@@ -25,14 +25,15 @@ export const fetchSignUser = createAsyncThunk(
         body: JSON.stringify(user),
       });
 
-      const data = await createTokenData.json();
-      return data;
+    if (!createTokenData.ok) throw new Error();
+
+    return await createTokenData.json();
   }
 );
 
 export const fetchCreateUser = createAsyncThunk(
   'user/fetchCreateUser',
-  async (user, {rejectWithValue, dispatch}) => {
+  async (user: {name: string, email: string, password: string}, {dispatch}) => {
       const userCreateData = await fetch(URL_API_USERS, {
         method: 'POST',
         headers: {
@@ -42,11 +43,17 @@ export const fetchCreateUser = createAsyncThunk(
         body: JSON.stringify(user)
       });
 
-      const data =  await userCreateData.json();
-      return data;
+      // console.log(userCreateData);
+
+    if (!userCreateData.ok) throw new Error();
+
+    const userData = await userCreateData.json();
+
+    dispatch(fetchSignUser({email: userData.email, password: userData.password}));
+  // console.log(userData)
+    return userData;
   }
 );
-
 
 
 const getLocalDateUser = () => {
@@ -106,6 +113,7 @@ const userSlice = createSlice({
 
         state.error = false;
         state.loading = false;
+        state.openModal = false;
     },
     // @ts-ignore
     [fetchSignUser.rejected]: (state) => {
@@ -114,13 +122,15 @@ const userSlice = createSlice({
     },
 
     // @ts-ignore
-    [fetchCreateUser.fulfilled]: (state) => {
+    [fetchCreateUser.pending]: (state) => {
       state.loading = true;
+      state.error = false;
     },
     // @ts-ignore
     [fetchCreateUser.fulfilled]: (state, action) => {
       console.log(action.payload);
       state.loading = false;
+      state.error = false;
     },
     // @ts-ignore
     [fetchCreateUser.rejected]: (state) => {
