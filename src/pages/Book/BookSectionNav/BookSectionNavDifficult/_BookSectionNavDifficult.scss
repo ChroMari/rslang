@@ -1,4 +1,4 @@
-.book-sections-nav-hard {
+.book-sections-nav-difficult {
     display: flex;
     justify-content: center;
 
@@ -8,6 +8,9 @@
         border-color: #e17979;
 
         &:hover {
+            background-color: #e17979;
+        }
+        &.active {
             background-color: #e17979;
         }
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import BookSectionNavItems from './BookSectionNavItems/BookSectionNavItems';
-import BookSectionNavHard from './BookSectionNavHard/BookSectionNavHard';
+import BookSectionNavDifficult from './BookSectionNavDifficult/BookSectionNavDifficult';
 
 import './_BookSectionNav.scss';
 
@@ -10,7 +10,7 @@ const BookSectionNav: React.FC = () => {
     return (
         <div className="book-sections-nav">
             <BookSectionNavItems />
-            {isAuth ? <BookSectionNavHard /> : null}
+            {isAuth ? <BookSectionNavDifficult /> : null}
         </div>
     );
 };

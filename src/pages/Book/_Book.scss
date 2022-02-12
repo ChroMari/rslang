@@ -1,4 +1,27 @@
+$sectionCount: 6;
+
+@mixin section-item($i) {
+    [data-sec='#{$i}'] {
+        --bgc: rgba(var(--s#{$i}-color), 0.5);
+        --clr: rgba(var(--s#{$i}-color));
+    }
+}
+
+:root {
+    --s0-color: 154, 121, 225;
+    --s1-color: 219, 124, 245;
+    --s2-color: 117, 82, 191;
+    --s3-color: 105, 121, 248;
+    --s4-color: 170, 93, 219;
+    --s5-color: 121, 175, 225;
+    --s6-color: 225, 121, 121;
+}
+
+@for $idx from 0 through $sectionCount {
+    @include section-item($idx);
+}
+
 .book {
-  background-color: #4F4F4F;
-  min-height: 100vh;
+    background-color: #4f4f4f;
+    min-height: 100vh;
 }

@@ -1,7 +1,8 @@
 .book-cards {
+    height: calc(100% - 283px);
     padding: 30px 20px;
 
-    background-color: rgba(154, 121, 225, 0.5);
+    background-color: var(--bgc);
     border-radius: 15px;
 }
 
@@ -9,4 +10,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 55px;
+}
+
+.book-cards::-webkit-scrollbar {
+    width: 10px;
+}
+
+.book-cards::-webkit-scrollbar-track {
+    background: #4f4f4f;
+}
+
+.book-cards::-webkit-scrollbar-thumb {
+    border-right: 5px solid rgba(154, 121, 225, 0.5);
 }

@@ -1,0 +1,16 @@
+.book-pagination {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 15px;
+}
+
+.book-game__btn {
+    padding: 10px;
+    background-color: #9a79e1;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #7f65b8;
+    }
+}
