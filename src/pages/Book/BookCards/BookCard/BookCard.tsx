@@ -12,6 +12,8 @@ type Props = {
 };
 
 const BookCard: React.FC<Props> = ({ word, collectAudio }) => {
+    const className = word.userWord ? `book-card ${word.userWord.difficulty}` : 'book-card';
+
     useEffect(() => {
         return () => {
             collectAudio([]);
@@ -19,7 +21,7 @@ const BookCard: React.FC<Props> = ({ word, collectAudio }) => {
     }, []);
 
     return (
-        <div className="book-card">
+        <div className={className}>
             <BookCardHeader
                 word={word.word}
                 image={word.image}
@@ -38,6 +40,8 @@ const BookCard: React.FC<Props> = ({ word, collectAudio }) => {
                     audioMeaning={word.audioMeaning}
                     audioExample={word.audioExample}
                     playAudio={collectAudio}
+                    userWord={word.userWord}
+                    _id={word._id}
                 />
             </div>
         </div>

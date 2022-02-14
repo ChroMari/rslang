@@ -34,12 +34,20 @@
     &:hover {
         background-color: #e17979;
     }
+
+    &.active {
+        background-color: #e17979;
+    }
 }
 
 .book-card-footer-learn__btn {
     border: 1px solid #79e196;
 
     &:hover {
+        background-color: #79e196;
+    }
+
+    &.active {
         background-color: #79e196;
     }
 }

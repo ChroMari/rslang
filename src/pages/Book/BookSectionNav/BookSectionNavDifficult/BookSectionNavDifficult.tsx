@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bookSelectors, changeSection } from '../../../../redux/slices/bookSlice';
 
 import './_BookSectionNavDifficult.scss';
+import {BOOK_HARD_SECTION} from "../../../../constants/Book";
 
 const BookSectionNavDifficult: React.FC = () => {
     const dispatch = useDispatch();
@@ -12,9 +13,9 @@ const BookSectionNavDifficult: React.FC = () => {
     return (
         <div className="book-sections-nav-difficult">
             <Button
-                className={section === 6 ? 'book-sections-nav__btn active' : 'book-sections-nav__btn'}
+                className={section === BOOK_HARD_SECTION ? 'book-sections-nav__btn active' : 'book-sections-nav__btn'}
                 onClick={() => {
-                    dispatch(changeSection(6));
+                    dispatch(changeSection(BOOK_HARD_SECTION));
                 }}
             >
                 Сложные слова

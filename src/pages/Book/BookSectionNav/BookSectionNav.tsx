@@ -3,14 +3,16 @@ import BookSectionNavItems from './BookSectionNavItems/BookSectionNavItems';
 import BookSectionNavDifficult from './BookSectionNavDifficult/BookSectionNavDifficult';
 
 import './_BookSectionNav.scss';
+import { useSelector } from 'react-redux';
+import { userSelectors } from '../../../redux/slices/userSlice';
 
 const BookSectionNav: React.FC = () => {
-    const isAuth = true; // пока нет состояния авторизации
+    const isAuth = useSelector(userSelectors.isAuth);
 
     return (
         <div className="book-sections-nav">
             <BookSectionNavItems />
-            {isAuth ? <BookSectionNavDifficult /> : null}
+            {isAuth && <BookSectionNavDifficult />}
         </div>
     );
 };

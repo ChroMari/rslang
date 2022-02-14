@@ -1,12 +1,21 @@
 .btn {
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-  color: #fff;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #fff;
 
-  background-color: transparent;
-  border: 0;
+    background-color: transparent;
+    border: 0;
 
-  cursor: pointer;
+    cursor: pointer;
+
+    &:disabled {
+        background-color: #333333;
+        border-color: #333333;
+
+        &:hover {
+            background-color: #333333;
+        }
+    }
 }

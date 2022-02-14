@@ -1,5 +1,5 @@
 type WordType = {
-    id: string;
+    _id: string;
     group: number;
     page: number;
     word: string;
@@ -13,6 +13,9 @@ type WordType = {
     wordTranslate: string;
     textMeaningTranslate: string;
     textExampleTranslate: string;
+    userWord?: {
+        difficulty: string;
+    };
 };
 
 export default WordType;

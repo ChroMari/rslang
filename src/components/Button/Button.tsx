@@ -4,11 +4,12 @@ import './_Button.scss';
 type Props = {
     className: string;
     onClick?: () => void;
+    disabled?: boolean;
 };
 
-const Button: React.FC<Props> = ({ children, className, onClick }) => {
+const Button: React.FC<Props> = ({ children, className, onClick, disabled }) => {
     return (
-        <button className={`btn ${className}`} onClick={onClick}>
+        <button disabled={disabled} className={`btn ${className}`} onClick={onClick}>
             {children}
         </button>
     );
