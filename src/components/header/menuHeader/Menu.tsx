@@ -5,17 +5,17 @@ const pages = [{
   keyTitle: 'home',
 },
   {
-    title: 'учебник',
+    title: 'Учебник',
     keyTitle: 'book',
   },
   {
-    title: 'статистика',
+    title: 'Статистика',
     keyTitle: 'static',
   }];
 
 const Menu = () => {
   const [activePage, setActivePage] = useState('home');
-  
+
   return (
     <nav>
       <ul className="menu">

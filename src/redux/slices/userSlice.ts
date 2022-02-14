@@ -1,60 +1,7 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {URL_API_SIGNIN, URL_API_USERS} from "../../constants/Url";
-
-//   {
-//   userName: null,
-//   userToken: null,
-//   userId: null,
-//
-//   openModal: false,
-//   typeModal: 'signIn',
-//   loading: false,
-//   error: false,
-// };
-
-export const fetchSignUser = createAsyncThunk(
-  'user/fetchSignUser',
-  async (user: {email: string, password: string}) => {
-
-      const createTokenData = await fetch(URL_API_SIGNIN,{
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user),
-      });
-
-    if (!createTokenData.ok) throw new Error();
-
-    return await createTokenData.json();
-  }
-);
-
-export const fetchCreateUser = createAsyncThunk(
-  'user/fetchCreateUser',
-  async (user: {name: string, email: string, password: string}, {dispatch}) => {
-      const userCreateData = await fetch(URL_API_USERS, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-      });
-
-      // console.log(userCreateData);
-
-    if (!userCreateData.ok) throw new Error();
-
-    const userData = await userCreateData.json();
-
-    dispatch(fetchSignUser({email: userData.email, password: userData.password}));
-  // console.log(userData)
-    return userData;
-  }
-);
-
+import {createSlice} from "@reduxjs/toolkit";
+import {fetchSignUser} from "../API/user/fetchSignUser";
+import {fetchCreateUser} from "../API/user/fetchCreateUser";
+import {fetchUpdateToken} from "../API/user/fetchUpdateToken";
 
 const getLocalDateUser = () => {
   const data = localStorage.getItem('user-info-1221');
@@ -67,7 +14,7 @@ const getLocalDateUser = () => {
     openModal: false,
     typeModal: 'signIn',
     loading: false,
-    error: false,
+    error: '',
   }
 };
 
@@ -77,23 +24,21 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    toggleOpenModal (state) {
+    toggleOpenModal(state) {
       state.openModal = true;
     },
 
-    toggleCloseModal (state) {
+    toggleCloseModal(state) {
       state.openModal = false;
-      state.error = false;
+      state.error = '';
     },
 
-    toggleTypeModal (state, action) {
-      const {type} = action.payload;
-
-      state.typeModal = type;
-      state.error = false;
+    toggleTypeModal(state, action) {
+      state.typeModal = action.payload.type;
+      state.error = '';
     },
 
-    closeUser (state) {
+    closeUser(state) {
       state.userName = null;
       state.userToken = null;
       state.userId = null;
@@ -108,41 +53,67 @@ const userSlice = createSlice({
     },
     // @ts-ignore
     [fetchSignUser.fulfilled]: (state, action) => {
-        state.userToken = action.payload.token;
-        state.userName = action.payload.name;
+      const {token, name, userId} = action.payload;
 
-        state.error = false;
-        state.loading = false;
-        state.openModal = false;
+      state.userToken = token;
+      state.userName = name;
+      state.userId = userId;
+
+      state.error = '';
+      state.loading = false;
+      state.openModal = false;
+
+      localStorage.setItem('user-info-1221', JSON.stringify({
+        userToken: token,
+        userName: name,
+        userId: userId,
+      }));
     },
     // @ts-ignore
-    [fetchSignUser.rejected]: (state) => {
-      state.error = true;
+    [fetchSignUser.rejected]: (state, action) => {
+      state.error = action.payload;
       state.loading = false;
     },
 
     // @ts-ignore
     [fetchCreateUser.pending]: (state) => {
       state.loading = true;
-      state.error = false;
+      // state.error = '';
     },
     // @ts-ignore
-    [fetchCreateUser.fulfilled]: (state, action) => {
-      console.log(action.payload);
+    [fetchCreateUser.fulfilled]: (state) => {
       state.loading = false;
-      state.error = false;
+      state.error = '';
     },
     // @ts-ignore
-    [fetchCreateUser.rejected]: (state) => {
-      state.error = true;
+    [fetchCreateUser.rejected]: (state, action) => {
       state.loading = false;
+      state.error = action.payload;
+    },
+
+    // @ts-ignore
+    [fetchUpdateToken.fulfilled]: (state, action) => {
+      state.userToken = action.payload.token;
+    },
+
+    // @ts-ignore
+    [fetchUpdateToken.rejected]: (state) => {
+      state.userName = null;
+      state.userToken = null;
+      state.userId = null;
+
+      localStorage.removeItem('user-info-1221');
+
+      state.openModal = true;
     }
   },
 });
 
-export const {toggleOpenModal,
+export const {
+  toggleOpenModal,
   toggleCloseModal,
   toggleTypeModal,
-  closeUser} = userSlice.actions;
+  closeUser
+} = userSlice.actions;
 
 export default userSlice.reducer;

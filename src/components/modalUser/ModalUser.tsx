@@ -3,8 +3,8 @@ import {ReactComponent as Close} from '../../assets/close.svg';
 
 import {toggleCloseModal} from "../../redux/slices/userSlice";
 
-import {SignUp} from "./SignUp";
-import {SignIn} from "./SignIn";
+import {SignUp} from "./signUser/SignUp";
+import {SignIn} from "./signUser/SignIn";
 
 import BounceLoader from "react-spinners/BounceLoader";
 

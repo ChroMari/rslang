@@ -3,9 +3,9 @@ import {ReactComponent as Logo} from '../../assets/logo.svg';
 import './headerStyle.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {closeUser, toggleOpenModal, toggleTypeModal} from "../../redux/slices/userSlice";
-import {Menu} from "./Menu";
-import {ButtonOpenApp} from './ButtonOpenApp';
-import {ButtonCloseApp} from "./ButtonCloseApp";
+import {Menu} from "./menuHeader/Menu";
+import {ButtonOpenApp} from './buttonsHeader/ButtonOpenApp';
+import {ButtonCloseApp} from "./buttonsHeader/ButtonCloseApp";
 
 
 const Header = () => {

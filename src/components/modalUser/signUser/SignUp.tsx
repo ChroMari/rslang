@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCreateUser, toggleTypeModal} from "../../redux/slices/userSlice";
+import {toggleTypeModal} from "../../../redux/slices/userSlice";
 import React, {useState} from "react";
+import {fetchCreateUser} from "../../../redux/API/user/fetchCreateUser";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const SignUp = () => {
         }
 
         {
-          modalState.error && <p className="modal__error">Неверно заполненные данные.</p>
+          modalState.error && <p className="modal__error">{modalState.error}</p>
         }
 
         <button className="modal__button"
