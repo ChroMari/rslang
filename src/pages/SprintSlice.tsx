@@ -3,13 +3,26 @@ import {createSlice} from '@reduxjs/toolkit';
 const SprintSlice = createSlice({
     name: 'sprintWords',
     initialState: {
-        sprintWords: ''
+        sprintWords: []
     },
     reducers: {
         addSprintWords(state, action) {
+            // @ts-ignore
+            state.sprintWords.push(action.payload)
+        }
+    }
+})
+
+const CurrentSprintWordSlice = createSlice({
+    name: 'currentSprintWord',
+    initialState: {
+        currentSprintWord: ''
+    },
+    reducers: {
+        addCurrentSprintWord(state, action) {
             return {
                 ...state,
-                sprintWords: action.payload,
+                currentSprintWord: action.payload,
             }
         }
     }

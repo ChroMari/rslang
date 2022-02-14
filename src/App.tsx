@@ -5,7 +5,7 @@ import { Sprint } from './pages/Sprint';
 function App() {
     return (
         <div className="App">
-            <DifficultyLevel />
+            <Sprint />
         </div>
     );
 }
