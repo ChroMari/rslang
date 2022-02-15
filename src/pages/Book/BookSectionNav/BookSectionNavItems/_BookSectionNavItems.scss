@@ -1,0 +1,30 @@
+$colors: rgba(var(--s0-color)), rgba(var(--s1-color)), rgba(var(--s2-color)), rgba(var(--s3-color)),
+    rgba(var(--s4-color)), rgba(var(--s5-color));
+$colors-length: length($colors);
+
+@mixin nav-item($color, $i) {
+    .book-sections-nav__btn {
+        &:nth-child(#{$i}) {
+            border-color: $color;
+
+            &:hover {
+                background-color: $color;
+            }
+
+            &.active {
+                background-color: $color;
+            }
+        }
+    }
+}
+
+.book-sections-nav-items {
+    display: flex;
+    justify-content: center;
+
+    gap: 0 10px;
+
+    @for $idx from 1 through $colors-length {
+        @include nav-item(nth($colors, $idx), $idx);
+    }
+}

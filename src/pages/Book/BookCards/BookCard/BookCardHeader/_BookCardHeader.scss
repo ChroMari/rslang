@@ -1,0 +1,42 @@
+.book-card-header {
+    display: flex;
+}
+
+.book-card-header__img {
+    width: 50%;
+    height: 150px;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-top-left-radius: 5px;
+}
+
+.book-card-header-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 50%;
+    padding: 18px 10px;
+}
+
+.book-card-header-text__title {
+    font-size: 20px;
+    font-weight: 900;
+
+    line-height: 23px;
+    color: var(--clr);
+}
+
+.book-card-header-text__translation {
+    margin: auto 0;
+    align-self: flex-start;
+
+    font-weight: 500;
+}
+
+.book-card-header-text__transcription {
+    display: block;
+}

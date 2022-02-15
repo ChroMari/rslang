@@ -1,0 +1,19 @@
+.book-card {
+    color: #fff;
+
+    background-color: #3c3c3c;
+    border-radius: 5px;
+    border: 2px solid transparent;
+
+    &.hard {
+        border-color: #e17979;
+    }
+
+    &.easy {
+        border-color: #79e196;
+    }
+}
+
+.book-card-content {
+    padding: 20px 15px;
+}
