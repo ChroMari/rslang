@@ -1,16 +1,15 @@
 import React from 'react';
 import Book from './pages/Book/Book';
-import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import {Header} from "./components/header/Header";
+import {ModalUser} from "./components/modalUser/ModalUser";
+import {Layout} from "./pages/Layout";
 
 function App() {
-    return (
-        <Provider store={store}>
-            <div className="App">
-                <Book />
-            </div>
-        </Provider>
-    );
+    return <div className="App">
+        <ModalUser />
+        <Layout />
+        <Book />
+    </div>;
 }
 
 export default App;
