@@ -4,7 +4,7 @@ import { StoreType } from '../store';
 const initialState = {
     isAuth: true,
     userToken:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDk5Y2I1NDc1MGQxMDAxNmM5MTI5YyIsImlhdCI6MTY0NDg3MTMxNywiZXhwIjoxNjQ0ODg1NzE3fQ.8hFth1pULXjopryfuz-9tyJRMhSlzBa3_cZ6V6qfyYE',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDk5Y2I1NDc1MGQxMDAxNmM5MTI5YyIsImlhdCI6MTY0NDkyNTgwMiwiZXhwIjoxNjQ0OTQwMjAyfQ.fsHmT1DkpTj_Adc7ZORMssuCq9ZUR76PY6888vlklKM',
     userId: '62099cb54750d10016c9129c',
 };
 

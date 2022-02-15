@@ -2,7 +2,7 @@ import UserWordType from '../utils/types/UserWordType';
 import {URL_API_USERS} from '../constants/Url';
 
 const deleteUserWord = async ({ userToken, userId, wordId }: UserWordType) => {
-    return await fetch(`${URL_API_USERS}/${userId}/words/${wordId}`, {
+    await fetch(`${URL_API_USERS}/${userId}/words/${wordId}`, {
         method: 'DELETE',
         headers: {
             Authorization: `Bearer ${userToken}`,

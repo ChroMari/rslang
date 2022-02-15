@@ -10,9 +10,14 @@
 
     background-color: #9a79e1;
     border-radius: 5px;
+
+    &.learned {
+        background-color: #79e196;
+    }
 }
 
-.book-pagination-prev__btn, .book-pagination-next__btn {
+.book-pagination-prev__btn,
+.book-pagination-next__btn {
     margin: 0 10px;
     padding: 10px;
 

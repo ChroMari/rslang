@@ -57,43 +57,34 @@ const wordsSlice = createSlice({
         },
     },
     extraReducers: {
-        // @ts-ignore
-        [fetchWords.pending]: (state) => {
+        [fetchWords.pending.type]: (state) => {
             state.status = 'pending';
         },
-        // @ts-ignore
-        [fetchWords.fulfilled]: (state, action) => {
+        [fetchWords.fulfilled.type]: (state, action) => {
             state.status = 'fulfilled';
             state.wordsList = action.payload;
         },
-        // @ts-ignore
-        [fetchWords.rejected]: (state, action) => {
+        [fetchWords.rejected.type]: (state) => {
             state.status = 'rejected';
         },
-        // @ts-ignore
-        [fetchWordsAuthorized.pending]: (state) => {
+        [fetchWordsAuthorized.pending.type]: (state) => {
             state.status = 'pending';
         },
-        // @ts-ignore
-        [fetchWordsAuthorized.fulfilled]: (state, action) => {
+        [fetchWordsAuthorized.fulfilled.type]: (state, action) => {
             state.status = 'fulfilled';
             state.wordsList = action.payload;
         },
-        // @ts-ignore
-        [fetchWordsAuthorized.rejected]: (state, action) => {
+        [fetchWordsAuthorized.rejected.type]: (state) => {
             state.status = 'rejected';
         },
-        // @ts-ignore
-        [fetchHardWords.pending]: (state) => {
+        [fetchHardWords.pending.type]: (state) => {
             state.status = 'pending';
         },
-        // @ts-ignore
-        [fetchHardWords.fulfilled]: (state, action) => {
+        [fetchHardWords.fulfilled.type]: (state, action) => {
             state.status = 'fulfilled';
             state.wordsList = action.payload;
         },
-        // @ts-ignore
-        [fetchHardWords.rejected]: (state, action) => {
+        [fetchHardWords.rejected.type]: (state) => {
             state.status = 'rejected';
         },
     },

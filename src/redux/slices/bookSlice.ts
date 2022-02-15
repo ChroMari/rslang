@@ -6,6 +6,7 @@ import getLocalStorage from '../localStorage/getLocalStorage';
 const initialState = {
     section: 0,
     page: getLocalStorage('page', BOOK_MIN_PAGE),
+    isLearnedPage: false,
 };
 
 const bookSlice = createSlice({
@@ -25,14 +26,18 @@ const bookSlice = createSlice({
 
             localStorage.setItem('page', JSON.stringify(state.page));
         },
+        changeIsLearnedPage(state, action) {
+            state.isLearnedPage = action.payload;
+        },
     },
 });
 
-export const { changeSection, changePage } = bookSlice.actions;
+export const { changeSection, changePage, changeIsLearnedPage } = bookSlice.actions;
 
 export const bookSelectors = {
     section: (store: StoreType): number => store.book.section,
     page: (store: StoreType): number => store.book.page,
+    isLearnedPage: (store: StoreType): boolean => store.book.isLearnedPage,
 };
 
 export default bookSlice.reducer;

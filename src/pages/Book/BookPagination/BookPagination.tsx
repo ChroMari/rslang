@@ -10,11 +10,16 @@ import './_BookPagination.scss';
 
 const BookPagination = () => {
     const section = useSelector(bookSelectors.section);
+    const isLearnedPage = useSelector(bookSelectors.isLearnedPage);
     return (
         <div className="book-pagination">
-            <Button className="book-game__btn">Аудиовызов</Button>
+            <Button className="book-game__btn" disabled={isLearnedPage && section !== BOOK_HARD_SECTION}>
+                Аудиовызов
+            </Button>
             {section !== BOOK_HARD_SECTION && <BookPaginationContainer />}
-            <Button className="book-game__btn">Спринт</Button>
+            <Button className="book-game__btn" disabled={isLearnedPage && section !== BOOK_HARD_SECTION}>
+                Спринт
+            </Button>
         </div>
     );
 };

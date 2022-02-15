@@ -9,6 +9,7 @@ import './_BookPaginationContainer.scss';
 
 const BookPaginationContainer = () => {
     const page = useSelector(bookSelectors.page);
+    const isLearnedPage = useSelector(bookSelectors.isLearnedPage);
     const dispatch = useDispatch();
 
     return (
@@ -22,7 +23,7 @@ const BookPaginationContainer = () => {
             >
                 {'\u003C'}
             </Button>
-            <div className="book-pagination__page">
+            <div className={isLearnedPage ? "book-pagination__page learned" : "book-pagination__page"}>
                 {page + 1} / {BOOK_MAX_PAGE + 1}
             </div>
             <Button
