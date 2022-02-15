@@ -16,14 +16,14 @@ const BookCards = () => {
     const section = useSelector(bookSelectors.section);
     const page = useSelector(bookSelectors.page);
     const isLearnedPage = useSelector(bookSelectors.isLearnedPage);
-    const isAuth = useSelector(userSelectors.isAuth);
+    const userId = useSelector(userSelectors.userId);
     const dispatch = useDispatch();
 
     const collectAudio = useAudio();
 
     const getWords = () => {
         if (section === BOOK_HARD_SECTION) dispatch(fetchHardWords());
-        else dispatch(isAuth ? fetchWordsAuthorized() : fetchWords());
+        else dispatch(userId ? fetchWordsAuthorized() : fetchWords());
     };
 
     useEffect(() => {

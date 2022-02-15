@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux';
 import { userSelectors } from '../../../redux/slices/userSlice';
 
 const BookSectionNav: React.FC = () => {
-    const isAuth = useSelector(userSelectors.isAuth);
+    const userId = useSelector(userSelectors.userId);
 
     return (
         <div className="book-sections-nav">
             <BookSectionNavItems />
-            {isAuth && <BookSectionNavDifficult />}
+            {userId && <BookSectionNavDifficult />}
         </div>
     );
 };
