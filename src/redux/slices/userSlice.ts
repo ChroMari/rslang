@@ -107,7 +107,7 @@ const userSlice = createSlice({
 export const userSelectors = {
     userName: (store: StoreType) => store.user.userName,
     userToken: (store: StoreType) => store.user.userToken,
-    userId: (store: StoreType) => store.user.userName,
+    userId: (store: StoreType) => store.user.userId,
 };
 
 export const { toggleOpenModal, toggleCloseModal, toggleTypeModal, closeUser } = userSlice.actions;

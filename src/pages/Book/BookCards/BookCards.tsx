@@ -22,7 +22,7 @@ const BookCards = () => {
     const collectAudio = useAudio();
 
     const getWords = () => {
-        if (section === BOOK_HARD_SECTION) dispatch(fetchHardWords());
+        if (section === BOOK_HARD_SECTION && userId) dispatch(fetchHardWords());
         else dispatch(userId ? fetchWordsAuthorized() : fetchWords());
     };
 
@@ -33,13 +33,14 @@ const BookCards = () => {
 
     useEffect(() => {
         getWords();
-    }, [page, section]);
+    }, [page, section, userId]);
 
     return (
         <div className="book-cards">
             {section !== BOOK_HARD_SECTION && isLearnedPage && (
                 <div className="book-cards__learned">Все слова освоены</div>
             )}
+            {!wordsList.length && <div className='book-cards__empty'><h3>В этом разделе еще нет слов</h3></div>}
             <div className="book-cards-container">
                 {wordsList.map((word) => (
                     <BookCard key={word.word} word={word} collectAudio={collectAudio} />

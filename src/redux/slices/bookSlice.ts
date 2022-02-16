@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { StoreType } from '../store';
-import { BOOK_MAX_PAGE, BOOK_MIN_PAGE } from '../../constants/Book';
+import {BOOK_MAX_PAGE, BOOK_MIN_PAGE, BOOK_MIN_SECTION} from '../../constants/Book';
 import getLocalStorage from '../localStorage/getLocalStorage';
 
 const initialState = {
-    section: 0,
+    section: getLocalStorage('section', BOOK_MIN_SECTION),
     page: getLocalStorage('page', BOOK_MIN_PAGE),
     isLearnedPage: false,
 };
@@ -16,6 +16,8 @@ const bookSlice = createSlice({
         changeSection(state, action) {
             state.section = action.payload;
             state.page = BOOK_MIN_PAGE;
+            localStorage.setItem('page', JSON.stringify(state.page));
+            localStorage.setItem('section', JSON.stringify(state.section));
         },
         changePage(state, action) {
             if (action.payload === 'next') {

@@ -16,7 +16,7 @@ const Book = () => {
 
     return (
         <div data-sec={section} className="book">
-            <div className="container">
+            <div className="container book-container">
                 <BookSectionNav />
                 <BookCards />
                 <BookPagination />
