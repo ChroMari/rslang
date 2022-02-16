@@ -10,43 +10,32 @@ import './Sprint.scss'
 import { addSprintRightAnswers } from './SprintRightAnswersSlice';
 import { addSprintWrongAnswers } from './SprintWrongAnswersSlice';
 import { Timer } from './Timer';
+import { addCurrentSprintWordTranslate } from './CurrentSprintTranslateSlice';
+import { addCurrentSprintScore } from './SprintScoreSlice';
+import { addCurrentSprintScoreStreak } from './CurrentSprintScoreStreakSlice';
+import { toggleTime } from './TimerSlice';
 
 export const Sprint = () => {
   const wordsArray = useSelector((state: RootStore) => state.addSprintWords.sprintWords)
   const difficultyLevel = useSelector((state: RootStore) => state.chooseDifficultyLevel.difficultyLevel)
   const currentSprintWord = useSelector((state:RootStore) => state.addCurrentSprintWord.currentSprintWord)
+  const currentSprintWordTranslate = useSelector((state:RootStore) => state.addCurrentSprintWordTranslate.currentSprintWordTranslate)
   const rightAnswers = useSelector((state:RootStore) => state.addSprintRightAnswers.sprintRightAnswers)
   const wrongAnswers = useSelector((state:RootStore) => state.addSprintWrongAnswers.sprintWrongAnswers)
+  const sprintScore = useSelector((state:RootStore) => state.addCurrentSprintScore.currentSprintScore)
+  const sprintScoreStreak = useSelector((state:RootStore) => state.addCurrentSprintScoreStreak.currentSprintScoreStreak)
+
 
   const dispatch = useDispatch()
 
-  let correctAnswerFlag = false
-
-  const fetchGetWords = (levelOfDifficulty: string, page: number) => {
-    fetch(`${URL_API_WORDS}/?group=${levelOfDifficulty}&page=${page}`, {
-      method: 'GET',
-    })
-        .then((res) => res.json())
-        .then((result) => {
-          dispatch(addSprintWords(result))
-        })
-        .catch((err) => console.log('error'))
-  }
-
-  const getChunkOfWords = () => {
-    let levelOfDifficulty = '1'
-    for (let i = 0; i < 30; i++) {
-      fetchGetWords(levelOfDifficulty, i)
-    }
-  }
+  let correctAnswerFlag: Boolean
 
   const getRandomWord = () => {
-    return wordsArray == null || undefined
-        ? null
-        : wordsArray[Math.floor(Math.random() * 30)][Math.floor(Math.random() * 20)]
+    return wordsArray[Math.floor(Math.random() * 30)][Math.floor(Math.random() * 20)]
   }
 
   const addRandomWordToCurrent = (word: any) => {
+    dispatch(addCurrentSprintWordTranslate(word))
     return (dispatch(addCurrentSprintWord(word)))
   }
 
@@ -54,7 +43,7 @@ export const Sprint = () => {
     if (Math.random() > 0.5) {
       // @ts-ignore
       correctAnswerFlag = true
-      return currentSprintWord.wordTranslate
+      return currentSprintWordTranslate
     } else {
       correctAnswerFlag = false
       // @ts-ignore
@@ -63,11 +52,14 @@ export const Sprint = () => {
   }
 
   const onclickHandlerCorrectAnswer = () => {
-    if (correctAnswerFlag) {
+    if (correctAnswerFlag === true) {
+      dispatch(addCurrentSprintScoreStreak(sprintScoreStreak === 30 ? sprintScoreStreak : sprintScoreStreak + 10))
+      dispatch(addCurrentSprintScore(sprintScore + 10 + sprintScoreStreak))
       dispatch(addSprintRightAnswers(currentSprintWord))
       addRandomWordToCurrent(getRandomWord())
       generateAnswer()
     } else {
+      dispatch(addCurrentSprintScoreStreak(0))
       dispatch(addSprintWrongAnswers(currentSprintWord))
       addRandomWordToCurrent(getRandomWord())
       generateAnswer()
@@ -75,11 +67,14 @@ export const Sprint = () => {
   }
 
   const onclickHandlerIncorrectAnswer = () => {
-    if (!correctAnswerFlag) {
+    if (correctAnswerFlag === false) {
+      dispatch(addCurrentSprintScoreStreak(sprintScoreStreak === 30 ? sprintScoreStreak : sprintScoreStreak + 10))
+      dispatch(addCurrentSprintScore(sprintScore + 10 + sprintScoreStreak))
       dispatch(addSprintRightAnswers(currentSprintWord))
       addRandomWordToCurrent(getRandomWord())
       generateAnswer()
     } else {
+      dispatch(addCurrentSprintScoreStreak(0))
       dispatch(addSprintWrongAnswers(currentSprintWord))
       addRandomWordToCurrent(getRandomWord())
       generateAnswer()
@@ -89,16 +84,18 @@ export const Sprint = () => {
   return (
       <div className={'sprint-round-container'}>
         <div className='round-info-top-string'>
-          <div className={'round-score'}>10000</div>
+          <div className={'round-score'}>{sprintScore}</div>
           <div className={'round-timer-container'}>
             <Timer/>
           </div>
-          <button className={'audio-button'}></button>
+          <button className={'audio-button'} onClick={() => {
+            dispatch(toggleTime(0))
+          }}></button>
         </div>
         <div className={'correct-answer-streak-container'}>
-          <div className={'correct__answer__streak__item'}></div>
-          <div className={'correct__answer__streak__item'}></div>
-          <div className={'correct__answer__streak__item'}></div>
+          <div className={'correct__answer__streak__item'} style={{background: `${sprintScoreStreak >= 10 ? '#79E196' : '#4F4F4F'}`}}></div>
+          <div className={'correct__answer__streak__item'} style={{background: `${sprintScoreStreak >= 20 ? '#79E196' : '#4F4F4F'}`}}></div>
+          <div className={'correct__answer__streak__item'} style={{background: `${sprintScoreStreak === 30 ? '#79E196' : '#4F4F4F'}`}}></div>
         </div>
         <div className='round-info-middle-string'>
           <div className={'current-word'}>{currentSprintWord.word === 'test' ? addRandomWordToCurrent(getRandomWord()) : currentSprintWord.word}</div>
