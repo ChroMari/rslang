@@ -42,3 +42,15 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+.book-cards__empty {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    font-size: 22px;
+    color: #fff;
+
+    transform: translate(-50%, -50%);
+}

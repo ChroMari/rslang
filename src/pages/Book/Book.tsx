@@ -8,6 +8,7 @@ import { ReactComponent as Loader } from '../../assets/svg/loading.svg';
 import { wordsSelectors } from '../../redux/slices/wordsSlice';
 
 import './_Book.scss';
+import {Footer} from "../../components/footer/Footer";
 
 const Book = () => {
     const section = useSelector(bookSelectors.section);
@@ -15,7 +16,7 @@ const Book = () => {
 
     return (
         <div data-sec={section} className="book">
-            <div className="container">
+            <div className="container book-container">
                 <BookSectionNav />
                 <BookCards />
                 <BookPagination />
@@ -24,6 +25,8 @@ const Book = () => {
             <div className={status === 'pending' ? 'book-loader active' : 'book-loader'}>
                 <Loader />
             </div>
+
+            <Footer />
         </div>
     );
 };

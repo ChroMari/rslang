@@ -29,7 +29,6 @@ const BookCardFooter: React.FC<Props> = ({ audio, audioMeaning, audioExample, pl
     const audioList = [audio, audioMeaning, audioExample];
 
     const section = useSelector(bookSelectors.section);
-    const isAuth = useSelector(userSelectors.isAuth);
     const userToken = useSelector(userSelectors.userToken);
     const userId = useSelector(userSelectors.userId);
 
@@ -50,7 +49,7 @@ const BookCardFooter: React.FC<Props> = ({ audio, audioMeaning, audioExample, pl
                 className="book-card-footer__btn book-card-footer-audio__btn"
                 onClick={() => playAudio(audioList)}
             />
-            {isAuth && (
+            {userId && (
                 <>
                     <Button className={classNameHard} onClick={() => handleClick('hard')}>
                         сложное

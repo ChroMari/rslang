@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {toggleTypeModal} from "../../../redux/slices/userSlice";
-import {fetchSignUser} from "../../../redux/API/user/fetchSignUser";
+import {fetchSignUser} from "../../../api/user/fetchSignUser";
 
 const minLengthPassword = 7;
 

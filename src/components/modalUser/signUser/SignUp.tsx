@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {toggleTypeModal} from "../../../redux/slices/userSlice";
 import React, {useState} from "react";
-import {fetchCreateUser} from "../../../redux/API/user/fetchCreateUser";
+import {fetchCreateUser} from "../../../api/user/fetchCreateUser";
 
 const SignUp = () => {
   const dispatch = useDispatch();

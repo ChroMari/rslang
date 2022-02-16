@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {URL_API_SIGNIN} from "../../../constants/Url";
+import {URL_API_SIGNIN} from "../../constants/Url";
 
 export const fetchSignUser = createAsyncThunk(
   'user/fetchSignUser',
