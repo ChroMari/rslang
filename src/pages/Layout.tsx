@@ -10,7 +10,7 @@ import {Footer} from "../components/footer/Footer";
 const Layout = () => {
   return (
     <React.Fragment>
-      <Header />
+      {/*<Header />*/}
       <Information />
       <Attribute />
       <GameLayout />

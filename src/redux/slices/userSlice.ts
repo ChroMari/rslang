@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchSignUser } from '../API/user/fetchSignUser';
-import { fetchCreateUser } from '../API/user/fetchCreateUser';
-import { fetchUpdateToken } from '../API/user/fetchUpdateToken';
+import { fetchSignUser } from '../../api/user/fetchSignUser';
+import { fetchCreateUser } from '../../api/user/fetchCreateUser';
+import { fetchUpdateToken } from '../../api/user/fetchUpdateToken';
 import { StoreType } from '../store';
 
 const getLocalDateUser = () => {
@@ -48,12 +48,10 @@ const userSlice = createSlice({
         },
     },
     extraReducers: {
-        // @ts-ignore
-        [fetchSignUser.pending]: (state) => {
+        [fetchSignUser.pending.type]: (state) => {
             state.loading = true;
         },
-        // @ts-ignore
-        [fetchSignUser.fulfilled]: (state, action) => {
+        [fetchSignUser.fulfilled.type]: (state, action) => {
             const { token, name, userId } = action.payload;
 
             state.userToken = token;
@@ -73,35 +71,28 @@ const userSlice = createSlice({
                 }),
             );
         },
-        // @ts-ignore
-        [fetchSignUser.rejected]: (state, action) => {
+        [fetchSignUser.rejected.type]: (state, action) => {
             state.error = action.payload;
             state.loading = false;
         },
 
-        // @ts-ignore
-        [fetchCreateUser.pending]: (state) => {
+        [fetchCreateUser.pending.type]: (state) => {
             state.loading = true;
-            // state.error = '';
         },
-        // @ts-ignore
-        [fetchCreateUser.fulfilled]: (state) => {
+        [fetchCreateUser.fulfilled.type]: (state) => {
             state.loading = false;
             state.error = '';
         },
-        // @ts-ignore
-        [fetchCreateUser.rejected]: (state, action) => {
+        [fetchCreateUser.rejected.type]: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
 
-        // @ts-ignore
-        [fetchUpdateToken.fulfilled]: (state, action) => {
+        [fetchUpdateToken.fulfilled.type]: (state, action) => {
             state.userToken = action.payload.token;
         },
 
-        // @ts-ignore
-        [fetchUpdateToken.rejected]: (state) => {
+        [fetchUpdateToken.rejected.type]: (state) => {
             state.userName = null;
             state.userToken = null;
             state.userId = null;

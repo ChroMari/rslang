@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {URL_API_USERS} from "../../../constants/Url";
+import {URL_API_USERS} from "../../constants/Url";
 
 export const fetchUpdateToken = createAsyncThunk(
   'user/fetchUpdateToken',

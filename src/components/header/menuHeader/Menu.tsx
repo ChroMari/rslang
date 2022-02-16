@@ -1,31 +1,35 @@
-import {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 const pages = [{
   title: 'Главная',
-  keyTitle: 'home',
+  keyTitle: '/',
 },
   {
     title: 'Учебник',
-    keyTitle: 'book',
+    keyTitle: '/book',
   },
   {
     title: 'Статистика',
-    keyTitle: 'static',
+    keyTitle: '/static',
   }];
 
-const Menu = () => {
-  const [activePage, setActivePage] = useState('home');
+const activeLink = {
+  borderColor: '#ffffff',
+};
 
+
+const Menu = () => {
   return (
     <nav>
       <ul className="menu">
         {
           pages.map((page, index) => {
             return (
-              <li key={index}
-                  className={'menu__item ' + (activePage === page.keyTitle && 'menu__item_active')}
-                  onClick={() => setActivePage(page.keyTitle)}> {page.title}
-              </li>
+                <NavLink key={index}
+                         style={({isActive}) => isActive ? activeLink : {}}
+                         className='menu__item'
+                         to={page.keyTitle}>{page.title}
+                </NavLink>
             )
           })
         }
