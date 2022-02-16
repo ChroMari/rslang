@@ -13,21 +13,6 @@ const SprintSlice = createSlice({
     }
 })
 
-const CurrentSprintWordSlice = createSlice({
-    name: 'currentSprintWord',
-    initialState: {
-        currentSprintWord: ''
-    },
-    reducers: {
-        addCurrentSprintWord(state, action) {
-            return {
-                ...state,
-                currentSprintWord: action.payload,
-            }
-        }
-    }
-})
-
 export const {addSprintWords} = SprintSlice.actions
 
 export default SprintSlice.reducer

@@ -2,9 +2,31 @@ import './DifficultyLevel.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { chooseDifficultyLevel } from './DifficultyLevelSlice';
+import { URL_API_WORDS } from '../constants/Url';
+import { addSprintWords } from './SprintSlice';
+import { RootStore } from './Store';
 
 export const DifficultyLevel = () => {
     const dispatch = useDispatch()
+    const difficultyLevel = useSelector((state: RootStore) => state.chooseDifficultyLevel.difficultyLevel)
+
+    const fetchGetWords = (levelOfDifficulty: string, page: number) => {
+        fetch(`${URL_API_WORDS}/?group=${levelOfDifficulty}&page=${page}`, {
+            method: 'GET',
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                dispatch(addSprintWords(result))
+            })
+            .catch((err) => console.log('error'))
+    }
+
+    const getChunkOfWords = () => {
+        let levelOfDifficulty = difficultyLevel ? '1' : difficultyLevel
+        for (let i = 0; i < 30; i++) {
+            fetchGetWords(levelOfDifficulty, i)
+        }
+    }
 
     const buttons = [
         {id: 1, value: '1'},
@@ -23,6 +45,7 @@ export const DifficultyLevel = () => {
                     <button className={`difficulty__level__button`} value={item.value} key={item.id}
                             onClick={(e)=> {
                                 dispatch(chooseDifficultyLevel(item.value))
+                                getChunkOfWords()
                             }}
                     >Раздел {item.value}</button>
                     )
