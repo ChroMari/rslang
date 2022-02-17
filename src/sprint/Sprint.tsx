@@ -93,6 +93,9 @@ export const Sprint = () => {
     audio.play()
   }
 
+  //{currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 30 ? <DifficultyLevel /> : <Sprint />)} - Условие для запуска
+
+
   return (
       <div className={'sprint-round-container'}>
         <div className='round-info-top-string'>
