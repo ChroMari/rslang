@@ -2,7 +2,7 @@ import { URL_API_WORDS } from '../constants/Url';
 import { useDispatch, useSelector } from 'react-redux';
 import {chooseDifficultyLevel} from './DifficultyLevelSlice';
 import { text } from 'stream/consumers';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RootStore } from './Store';
 import { addSprintWords } from './SprintSlice';
 import { addCurrentSprintWord } from './CurrentSprintWordSlice';
@@ -28,7 +28,7 @@ export const Sprint = () => {
 
   const dispatch = useDispatch()
 
-  let correctAnswerFlag: Boolean
+  const [correctAnswerFlag, setCorrectAnswerFlag] = useState(false)
 
   const getRandomWord = () => {
     return wordsArray[Math.floor(Math.random() * 30)][Math.floor(Math.random() * 20)]
@@ -39,17 +39,23 @@ export const Sprint = () => {
     return (dispatch(addCurrentSprintWord(word)))
   }
 
+  const [currentRandomTranslate, setCurrentRandomTranslate] = useState('')
+
+  useEffect(() => {
+    setCurrentRandomTranslate(generateAnswer())
+  }, [currentSprintWord])
+
   const generateAnswer = () => {
     if (Math.random() > 0.5) {
-      // @ts-ignore
-      correctAnswerFlag = true
+      setCorrectAnswerFlag(true)
       return currentSprintWordTranslate
     } else {
-      correctAnswerFlag = false
+      setCorrectAnswerFlag(false)
       // @ts-ignore
       return getRandomWord().wordTranslate
     }
   }
+
 
   const onclickHandlerCorrectAnswer = () => {
     if (correctAnswerFlag === true) {
@@ -81,6 +87,12 @@ export const Sprint = () => {
     }
   }
 
+  const audioHandler = () => {
+    // @ts-ignore
+    const audio = new Audio(`https://rslanglearnwords.herokuapp.com/` + currentSprintWord.audio)
+    audio.play()
+  }
+
   return (
       <div className={'sprint-round-container'}>
         <div className='round-info-top-string'>
@@ -88,9 +100,7 @@ export const Sprint = () => {
           <div className={'round-timer-container'}>
             <Timer/>
           </div>
-          <button className={'audio-button'} onClick={() => {
-            dispatch(toggleTime(0))
-          }}></button>
+          <button className={'audio-button'} onClick={audioHandler}></button>
         </div>
         <div className={'correct-answer-streak-container'}>
           <div className={'correct__answer__streak__item'} style={{background: `${sprintScoreStreak >= 10 ? '#79E196' : '#4F4F4F'}`}}></div>
@@ -99,7 +109,7 @@ export const Sprint = () => {
         </div>
         <div className='round-info-middle-string'>
           <div className={'current-word'}>{currentSprintWord.word === 'test' ? addRandomWordToCurrent(getRandomWord()) : currentSprintWord.word}</div>
-          <div className={'current-word-translate'}>{generateAnswer()}</div>
+          <div className={'current-word-translate'}>{currentRandomTranslate}</div>
         </div>
         <div className='answer-button-container'>
           <button className='incorrect-answer' onClick={onclickHandlerIncorrectAnswer}>Не верно</button>
