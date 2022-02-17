@@ -10,6 +10,7 @@ import { addCurrentSprintWordTranslate } from '../redux/slices/sprintSlices/Curr
 import { addCurrentSprintScore } from '../redux/slices/sprintSlices/SprintScoreSlice';
 import { addCurrentSprintScoreStreak } from '../redux/slices/sprintSlices/CurrentSprintScoreStreakSlice';
 import { StoreType } from '../redux/store';
+import { NavLink } from 'react-router-dom';
 export const SprintResults = () => {
     const rightAnswers = useSelector((state:StoreType) => state.addSprintRightAnswers.sprintRightAnswers)
     const wrongAnswers = useSelector((state:StoreType) => state.addSprintWrongAnswers.sprintWrongAnswers)
@@ -60,7 +61,7 @@ export const SprintResults = () => {
                     </div>
                 </div>
             </div>
-            <button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button>
+            <NavLink to={'/'}><button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button></NavLink>
         </div>
     )
 }

@@ -10,6 +10,7 @@ export const DifficultyLevel = () => {
     const difficultyLevel = useSelector((state: StoreType) => state.chooseDifficultyLevel.difficultyLevel)
 
     const fetchGetWords = (levelOfDifficulty: string, page: number) => {
+        console.log(levelOfDifficulty);
         fetch(`${URL_API_WORDS}/?group=${levelOfDifficulty}&page=${page}`, {
             method: 'GET',
         })
@@ -21,19 +22,18 @@ export const DifficultyLevel = () => {
     }
 
     const getChunkOfWords = () => {
-        let levelOfDifficulty = difficultyLevel ? '1' : difficultyLevel
         for (let i = 0; i < 30; i++) {
-            fetchGetWords(levelOfDifficulty, i)
+            fetchGetWords(difficultyLevel, i)
         }
     }
 
     const buttons = [
-        {id: 1, value: '1'},
-        {id: 2, value: '2'},
-        {id: 3, value: '3'},
-        {id: 4, value: '4'},
-        {id: 5, value: '5'},
-        {id: 6, value: '6'}]
+        {id: '0', value: '1'},
+        {id: '1', value: '2'},
+        {id: '2', value: '3'},
+        {id: '3', value: '4'},
+        {id: '4', value: '5'},
+        {id: '5', value: '6'}]
 
     return (
         <div className={'difficulty-level-container'}>
@@ -41,9 +41,9 @@ export const DifficultyLevel = () => {
             <div className={'difficulty-level-description'}>выберите соответствует ли перевод заданному слову</div>
             <div className={'difficulty-level-button-block'}>
                 {buttons.map((item)=>(
-                    <button className={`difficulty__level__button`} value={item.value} key={item.id}
+                    <button className={`difficulty__level__button`} value={item.id} key={item.id}
                             onClick={(e)=> {
-                                dispatch(chooseDifficultyLevel(item.value))
+                                dispatch(chooseDifficultyLevel(item.id))
                                 getChunkOfWords()
                             }}
                     >Раздел {item.value}</button>

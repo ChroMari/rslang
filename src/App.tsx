@@ -22,6 +22,7 @@ function App() {
                 <Route path="/" element={<Layout />} />
                 <Route path="/book" element={<Book />} />
                 <Route path="/sprint" element={currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 30 ? <DifficultyLevel /> : <Sprint />)} />
+                <Route path="/sprintFromPage" element={currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 1 ? <div>Loading...</div> : <Sprint />)} />
             </Routes>
         </div>
     );

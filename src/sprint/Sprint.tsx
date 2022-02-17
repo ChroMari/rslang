@@ -14,6 +14,7 @@ import { addCurrentSprintScore } from '../redux/slices/sprintSlices/SprintScoreS
 import { addCurrentSprintScoreStreak } from '../redux/slices/sprintSlices/CurrentSprintScoreStreakSlice';
 import { toggleTime } from '../redux/slices/sprintSlices/TimerSlice';
 import { StoreType } from '../redux/store';
+import { log } from 'util';
 
 export const Sprint = () => {
   const wordsArray = useSelector((state: StoreType) => state.addSprintWords.sprintWords)
@@ -31,7 +32,7 @@ export const Sprint = () => {
   const [correctAnswerFlag, setCorrectAnswerFlag] = useState(false)
 
   const getRandomWord = () => {
-    return wordsArray[Math.floor(Math.random() * 30)][Math.floor(Math.random() * 20)]
+    return wordsArray.length !== 30 ? wordsArray[0][Math.floor(Math.random() * 19)] : wordsArray[Math.floor(Math.random() * 30)][Math.floor(Math.random() * 20)]
   }
 
   const addRandomWordToCurrent = (word: any) => {
