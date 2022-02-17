@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { RootStore } from './Store';
-import { toggleTime } from './TimerSlice';
+import { toggleTime } from '../redux/slices/sprintSlices/TimerSlice';
 import { useEffect, useState } from 'react';
 
 export const Timer = () => {

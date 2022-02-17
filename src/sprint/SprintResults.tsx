@@ -1,19 +1,19 @@
 import './Sprint.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { RootStore } from './Store';
-import { chooseDifficultyLevel } from './DifficultyLevelSlice';
-import { removeSprintWords } from './SprintSlice';
-import { removeCurrentSprintWord } from './CurrentSprintWordSlice';
-import { removeSprintRightAnswers } from './SprintRightAnswersSlice';
-import { removeSprintWrongAnswers } from './SprintWrongAnswersSlice';
-import { toggleTime } from './TimerSlice';
-import { addCurrentSprintWordTranslate } from './CurrentSprintTranslateSlice';
-import { addCurrentSprintScore } from './SprintScoreSlice';
-import { addCurrentSprintScoreStreak } from './CurrentSprintScoreStreakSlice';
+import { chooseDifficultyLevel } from '../redux/slices/sprintSlices/DifficultyLevelSlice';
+import { removeSprintWords } from '../redux/slices/sprintSlices/SprintSlice';
+import { removeCurrentSprintWord } from '../redux/slices/sprintSlices/CurrentSprintWordSlice';
+import { removeSprintRightAnswers } from '../redux/slices/sprintSlices/SprintRightAnswersSlice';
+import { removeSprintWrongAnswers } from '../redux/slices/sprintSlices/SprintWrongAnswersSlice';
+import { toggleTime } from '../redux/slices/sprintSlices/TimerSlice';
+import { addCurrentSprintWordTranslate } from '../redux/slices/sprintSlices/CurrentSprintTranslateSlice';
+import { addCurrentSprintScore } from '../redux/slices/sprintSlices/SprintScoreSlice';
+import { addCurrentSprintScoreStreak } from '../redux/slices/sprintSlices/CurrentSprintScoreStreakSlice';
+import { StoreType } from '../redux/store';
 export const SprintResults = () => {
-    const rightAnswers = useSelector((state:RootStore) => state.addSprintRightAnswers.sprintRightAnswers)
-    const wrongAnswers = useSelector((state:RootStore) => state.addSprintWrongAnswers.sprintWrongAnswers)
-    const sprintScore = useSelector((state:RootStore) => state.addCurrentSprintScore.currentSprintScore)
+    const rightAnswers = useSelector((state:StoreType) => state.addSprintRightAnswers.sprintRightAnswers)
+    const wrongAnswers = useSelector((state:StoreType) => state.addSprintWrongAnswers.sprintWrongAnswers)
+    const sprintScore = useSelector((state:StoreType) => state.addCurrentSprintScore.currentSprintScore)
     const dispatch = useDispatch()
 
     const onclickEndButton = () => {

@@ -1,29 +1,29 @@
 import { URL_API_WORDS } from '../constants/Url';
 import { useDispatch, useSelector } from 'react-redux';
-import {chooseDifficultyLevel} from './DifficultyLevelSlice';
+import {chooseDifficultyLevel} from '../redux/slices/sprintSlices/DifficultyLevelSlice';
 import { text } from 'stream/consumers';
 import { useEffect, useState } from 'react';
-import { RootStore } from './Store';
-import { addSprintWords } from './SprintSlice';
-import { addCurrentSprintWord } from './CurrentSprintWordSlice';
+import { addSprintWords } from '../redux/slices/sprintSlices/SprintSlice';
+import { addCurrentSprintWord } from '../redux/slices/sprintSlices/CurrentSprintWordSlice';
 import './Sprint.scss'
-import { addSprintRightAnswers } from './SprintRightAnswersSlice';
-import { addSprintWrongAnswers } from './SprintWrongAnswersSlice';
+import { addSprintRightAnswers } from '../redux/slices/sprintSlices/SprintRightAnswersSlice';
+import { addSprintWrongAnswers } from '../redux/slices/sprintSlices/SprintWrongAnswersSlice';
 import { Timer } from './Timer';
-import { addCurrentSprintWordTranslate } from './CurrentSprintTranslateSlice';
-import { addCurrentSprintScore } from './SprintScoreSlice';
-import { addCurrentSprintScoreStreak } from './CurrentSprintScoreStreakSlice';
-import { toggleTime } from './TimerSlice';
+import { addCurrentSprintWordTranslate } from '../redux/slices/sprintSlices/CurrentSprintTranslateSlice';
+import { addCurrentSprintScore } from '../redux/slices/sprintSlices/SprintScoreSlice';
+import { addCurrentSprintScoreStreak } from '../redux/slices/sprintSlices/CurrentSprintScoreStreakSlice';
+import { toggleTime } from '../redux/slices/sprintSlices/TimerSlice';
+import { StoreType } from '../redux/store';
 
 export const Sprint = () => {
-  const wordsArray = useSelector((state: RootStore) => state.addSprintWords.sprintWords)
-  const difficultyLevel = useSelector((state: RootStore) => state.chooseDifficultyLevel.difficultyLevel)
-  const currentSprintWord = useSelector((state:RootStore) => state.addCurrentSprintWord.currentSprintWord)
-  const currentSprintWordTranslate = useSelector((state:RootStore) => state.addCurrentSprintWordTranslate.currentSprintWordTranslate)
-  const rightAnswers = useSelector((state:RootStore) => state.addSprintRightAnswers.sprintRightAnswers)
-  const wrongAnswers = useSelector((state:RootStore) => state.addSprintWrongAnswers.sprintWrongAnswers)
-  const sprintScore = useSelector((state:RootStore) => state.addCurrentSprintScore.currentSprintScore)
-  const sprintScoreStreak = useSelector((state:RootStore) => state.addCurrentSprintScoreStreak.currentSprintScoreStreak)
+  const wordsArray = useSelector((state: StoreType) => state.addSprintWords.sprintWords)
+  const difficultyLevel = useSelector((state: StoreType) => state.chooseDifficultyLevel.difficultyLevel)
+  const currentSprintWord = useSelector((state:StoreType) => state.addCurrentSprintWord.currentSprintWord)
+  const currentSprintWordTranslate = useSelector((state:StoreType) => state.addCurrentSprintWordTranslate.currentSprintWordTranslate)
+  const rightAnswers = useSelector((state:StoreType) => state.addSprintRightAnswers.sprintRightAnswers)
+  const wrongAnswers = useSelector((state:StoreType) => state.addSprintWrongAnswers.sprintWrongAnswers)
+  const sprintScore = useSelector((state:StoreType) => state.addCurrentSprintScore.currentSprintScore)
+  const sprintScoreStreak = useSelector((state:StoreType) => state.addCurrentSprintScoreStreak.currentSprintScoreStreak)
 
 
   const dispatch = useDispatch()

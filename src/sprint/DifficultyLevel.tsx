@@ -1,14 +1,13 @@
 import './DifficultyLevel.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { chooseDifficultyLevel } from './DifficultyLevelSlice';
+import { chooseDifficultyLevel } from '../redux/slices/sprintSlices/DifficultyLevelSlice';
 import { URL_API_WORDS } from '../constants/Url';
-import { addSprintWords } from './SprintSlice';
-import { RootStore } from './Store';
+import { addSprintWords } from '../redux/slices/sprintSlices/SprintSlice';
+import { StoreType } from '../redux/store';
 
 export const DifficultyLevel = () => {
     const dispatch = useDispatch()
-    const difficultyLevel = useSelector((state: RootStore) => state.chooseDifficultyLevel.difficultyLevel)
+    const difficultyLevel = useSelector((state: StoreType) => state.chooseDifficultyLevel.difficultyLevel)
 
     const fetchGetWords = (levelOfDifficulty: string, page: number) => {
         fetch(`${URL_API_WORDS}/?group=${levelOfDifficulty}&page=${page}`, {
