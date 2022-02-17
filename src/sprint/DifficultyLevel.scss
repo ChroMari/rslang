@@ -1,0 +1,97 @@
+.difficulty-level-container {
+  width: 756px;
+  height: 526px;
+  background: #333333;
+  box-shadow: 0px 0px 25px rgba(154, 121, 225, 0.25);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding-top: 120px;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.difficulty-level-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+.difficulty-level-description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  text-transform: lowercase;
+  color: #FFFFFF;
+}
+.difficulty-level-button-block {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.difficulty__level__button {
+  width: 128.55px;
+  height: 42px;
+  border: 2px solid #DB7CF5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  background: #333333;
+  transition: all 0.5s ease;
+}
+.difficulty__level__button:hover {
+  background: #DB7CF5;
+}
+.difficulty__level__button:active {
+  transform: scale(1.1);
+}
+.close-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: #DB7CF5 2px solid;
+  border-radius: 50%;
+  background: #333333;
+  opacity: 0.8;
+  transition: all 0.5s ease;
+}
+.close-button:before, .close-button:after {
+  position: absolute;
+  top: 12px;
+  left: 22px;
+  content: ' ';
+  height: 25px;
+  width: 2px;
+  background-color: #DB7CF5;
+}
+.close-button:before {
+  transform: rotate(45deg);
+}
+.close-button:after {
+  transform: rotate(-45deg);
+}
+.close-button:hover {
+  opacity: 1;
+}
+.close-button:active {
+  transform: scale(1.1);
+}

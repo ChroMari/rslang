@@ -1,0 +1,214 @@
+body {
+  background: #4F4F4F;
+}
+
+.sprint-round-container {
+  width: 30vw;
+  height: 40vh;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  background: #333333;
+  box-shadow: 0px 0px 25px rgba(154, 121, 225, 0.25);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.round-info-top-string {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.round-score{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 33px;
+  color: #9A79E1;
+  width: 40px;
+}
+.round-timer-container {
+  width: 60px;
+  height: 60px;
+  background: #4F4F4F;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.round-timer {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 35px;
+  line-height: 41px;
+  color: #FFFFFF;
+}
+.audio-button {
+  width: 40px;
+  height: 40px;
+  background: #4F4F4F;
+  border-radius: 50%;
+}
+.correct-answer-streak-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+}
+.correct__answer__streak__item {
+  width: 35px;
+  height: 35px;
+  background: #4F4F4F;
+  border-radius: 50%;
+}
+.current-word {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #9A79E1;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0 30px;
+}
+.current-word-translate {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 30px;
+}
+.answer-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+.incorrect-answer {
+  width: 140px;
+  height: 45px;
+  background: #E17979;
+  border-radius: 3px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.correct-answer {
+  width: 140px;
+  height: 45px;
+  background: #79E196;
+  border-radius: 3px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 45px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+//-------results
+
+.sprint-result-container {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.sprint-result-title {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+.sprint-result-main-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.sprint-result-main-subtitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+}
+.sprint-result-answers-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.sprint__result__answers__block__item {
+  width: 30vw;
+  height: 70vh;
+  border: 1px solid #9A79E1;
+  box-sizing: border-box;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-top: 30px;
+}
+.sprint__result__answers__block__item__title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: center;
+}
+.sprint__result__answers__block__item__answers__container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 80px;
+}
+.sprint__result__answers__block__item__answers__item {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.sprint-result-end-button {
+  width: 193px;
+  height: 45px;
+  background: #9A79E1;
+  border-radius: 3px;
+  align-self: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
