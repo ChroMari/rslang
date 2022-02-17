@@ -12,9 +12,13 @@ export const store = configureStore({
     reducer: {
         chooseDifficultyLevel: chooseDifficultyLevelReducer,
         addSprintWords: addSprintWordsReducer,
+        removeSprintWords: addSprintWordsReducer,
         addCurrentSprintWord: addCurrentSprintWordReducer,
+        removeCurrentSprintWord: addCurrentSprintWordReducer,
         addSprintRightAnswers: addSprintRightAnswersReducer,
+        removeSprintRightAnswers: addSprintRightAnswersReducer,
         addSprintWrongAnswers: addSprintWrongAnswersReducer,
+        removeSprintWrongAnswers: addSprintWrongAnswersReducer,
         toggleTime: toggleTimeReducer,
         addCurrentSprintWordTranslate: currentSprintWordTranslateReducer,
         addCurrentSprintScore: currentSprintScoreReducer,

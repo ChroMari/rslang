@@ -9,10 +9,14 @@ const SprintRightAnswerSlice = createSlice({
         addSprintRightAnswers(state, action) {
             // @ts-ignore
             state.sprintRightAnswers.push(action.payload)
+        },
+        removeSprintRightAnswers(state, action) {
+            // @ts-ignore
+            state.sprintRightAnswers = action
         }
     }
 })
 
-export const {addSprintRightAnswers} = SprintRightAnswerSlice.actions
+export const {addSprintRightAnswers, removeSprintRightAnswers} = SprintRightAnswerSlice.actions
 
 export default SprintRightAnswerSlice.reducer

@@ -9,10 +9,14 @@ const SprintSlice = createSlice({
         addSprintWords(state, action) {
             // @ts-ignore
             state.sprintWords.push(action.payload)
+        },
+        removeSprintWords(state, action) {
+            // @ts-ignore
+            state.sprintWords = action
         }
     }
 })
 
-export const {addSprintWords} = SprintSlice.actions
+export const {addSprintWords, removeSprintWords} = SprintSlice.actions
 
 export default SprintSlice.reducer

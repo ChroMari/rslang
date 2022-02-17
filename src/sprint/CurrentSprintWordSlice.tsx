@@ -14,10 +14,14 @@ const CurrentSprintWordSlice = createSlice({
                 ...state,
                 currentSprintWord: action.payload,
             }
+        },
+        removeCurrentSprintWord(state, action) {
+            // @ts-ignore
+            state.currentSprintWord = action
         }
     }
 })
 
-export const {addCurrentSprintWord} = CurrentSprintWordSlice.actions
+export const {addCurrentSprintWord, removeCurrentSprintWord} = CurrentSprintWordSlice.actions
 
 export default CurrentSprintWordSlice.reducer

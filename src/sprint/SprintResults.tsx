@@ -1,10 +1,32 @@
 import './Sprint.scss'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootStore } from './Store';
+import { chooseDifficultyLevel } from './DifficultyLevelSlice';
+import { removeSprintWords } from './SprintSlice';
+import { removeCurrentSprintWord } from './CurrentSprintWordSlice';
+import { removeSprintRightAnswers } from './SprintRightAnswersSlice';
+import { removeSprintWrongAnswers } from './SprintWrongAnswersSlice';
+import { toggleTime } from './TimerSlice';
+import { addCurrentSprintWordTranslate } from './CurrentSprintTranslateSlice';
+import { addCurrentSprintScore } from './SprintScoreSlice';
+import { addCurrentSprintScoreStreak } from './CurrentSprintScoreStreakSlice';
 export const SprintResults = () => {
     const rightAnswers = useSelector((state:RootStore) => state.addSprintRightAnswers.sprintRightAnswers)
     const wrongAnswers = useSelector((state:RootStore) => state.addSprintWrongAnswers.sprintWrongAnswers)
     const sprintScore = useSelector((state:RootStore) => state.addCurrentSprintScore.currentSprintScore)
+    const dispatch = useDispatch()
+
+    const onclickEndButton = () => {
+        dispatch(chooseDifficultyLevel(''))
+        dispatch(removeSprintWords([]))
+        dispatch(removeCurrentSprintWord([]))
+        dispatch(removeSprintRightAnswers([]))
+        dispatch(removeSprintWrongAnswers([]))
+        dispatch(toggleTime(60))
+        dispatch(addCurrentSprintWordTranslate(''))
+        dispatch(addCurrentSprintScore(0))
+        dispatch(addCurrentSprintScoreStreak(0))
+    }
 
     return (
         <div className={'sprint-result-container'}>
@@ -38,7 +60,7 @@ export const SprintResults = () => {
                     </div>
                 </div>
             </div>
-            <button className='sprint-result-end-button'>Завершить игру</button>
+            <button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button>
         </div>
     )
 }
