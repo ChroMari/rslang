@@ -16,7 +16,6 @@ const BookPagination = () => {
     const page = useSelector(bookSelectors.page)
 
     const fetchGetWords = (levelOfDifficulty: string, page: number) => {
-        console.log(levelOfDifficulty);
         fetch(`${URL_API_WORDS}?group=${levelOfDifficulty}&page=${page}`, {
             method: 'GET',
         })

@@ -41,9 +41,9 @@ export const SprintResults = () => {
                     <div className='sprint__result__answers__block__item__answers__container'>
                         <div className='sprint__result__answers__block__item__answers__item'>
                             {rightAnswers.length > 0
-                                ? rightAnswers.map((item) => (
+                                ? rightAnswers.map((item, id) => (
                                 //@ts-ignore
-                                <div className='sprint__word'>{item.word} - {item.wordTranslate}</div>))
+                                <div className='sprint__word' key={id}>{item.word} - {item.wordTranslate}</div>))
                                 : <div className='sprint__word'>Нет неправильных ответов</div>}
                         </div>
                     </div>
@@ -53,9 +53,9 @@ export const SprintResults = () => {
                     <div className='sprint__result__answers__block__item__answers__container'>
                         <div className='sprint__result__answers__block__item__answers__item'>
                             {wrongAnswers.length > 0
-                                ? wrongAnswers.map((item) => (
+                                ? wrongAnswers.map((item, id) => (
                                     //@ts-ignore
-                                    <div className='sprint__word'>{item.word} - {item.wordTranslate}</div>))
+                                    <div className='sprint__word' key={id}>{item.word} - {item.wordTranslate}</div>))
                                 : <div className='sprint__word'>Нет неправильных ответов</div>}
                         </div>
                     </div>
