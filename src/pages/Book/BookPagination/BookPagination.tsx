@@ -17,7 +17,7 @@ const BookPagination = () => {
 
     const fetchGetWords = (levelOfDifficulty: string, page: number) => {
         console.log(levelOfDifficulty);
-        fetch(`${URL_API_WORDS}/?group=${levelOfDifficulty}&page=${page}`, {
+        fetch(`${URL_API_WORDS}?group=${levelOfDifficulty}&page=${page}`, {
             method: 'GET',
         })
             .then((res) => res.json())

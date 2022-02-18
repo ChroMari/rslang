@@ -18,11 +18,11 @@ export const SprintResults = () => {
     const dispatch = useDispatch()
 
     const onclickEndButton = () => {
-        dispatch(chooseDifficultyLevel(''))
         dispatch(removeSprintWords([]))
-        dispatch(removeCurrentSprintWord([]))
+        dispatch(removeCurrentSprintWord(''))
         dispatch(removeSprintRightAnswers([]))
         dispatch(removeSprintWrongAnswers([]))
+        dispatch(chooseDifficultyLevel(''))
         dispatch(toggleTime(60))
         dispatch(addCurrentSprintWordTranslate(''))
         dispatch(addCurrentSprintScore(0))

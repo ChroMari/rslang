@@ -12,7 +12,7 @@ const SprintSlice = createSlice({
         },
         removeSprintWords(state, action) {
             // @ts-ignore
-            state.sprintWords = action
+            state.sprintWords = new Array()
         }
     }
 })

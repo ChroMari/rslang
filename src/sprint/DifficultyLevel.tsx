@@ -10,8 +10,7 @@ export const DifficultyLevel = () => {
     const difficultyLevel = useSelector((state: StoreType) => state.chooseDifficultyLevel.difficultyLevel)
 
     const fetchGetWords = (levelOfDifficulty: string, page: number) => {
-        console.log(levelOfDifficulty);
-        fetch(`${URL_API_WORDS}/?group=${levelOfDifficulty}&page=${page}`, {
+        fetch(`${URL_API_WORDS}?group=${levelOfDifficulty}&page=${page}`, {
             method: 'GET',
         })
             .then((res) => res.json())
@@ -21,9 +20,9 @@ export const DifficultyLevel = () => {
             .catch((err) => console.log('error'))
     }
 
-    const getChunkOfWords = () => {
+    const getChunkOfWords = (level: string) => {
         for (let i = 0; i < 30; i++) {
-            fetchGetWords(difficultyLevel, i)
+            fetchGetWords(level, i)
         }
     }
 
@@ -44,7 +43,7 @@ export const DifficultyLevel = () => {
                     <button className={`difficulty__level__button`} value={item.id} key={item.id}
                             onClick={(e)=> {
                                 dispatch(chooseDifficultyLevel(item.id))
-                                getChunkOfWords()
+                                getChunkOfWords(item.id)
                             }}
                     >Раздел {item.value}</button>
                     )
