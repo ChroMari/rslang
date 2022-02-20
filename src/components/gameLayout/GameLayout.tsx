@@ -2,6 +2,7 @@ import './gameLayoutStyle.scss';
 
 import game1 from '../../assets/game-1.png';
 import game2 from '../../assets/game-2.png';
+import { NavLink } from 'react-router-dom';
 
 const GameLayout = () => {
   return (
@@ -15,14 +16,14 @@ const GameLayout = () => {
             <img className="game__card-img" src={game1} alt="game img"/>
             <h3 className="game__card-title">Аудиовызов</h3>
             <p className="game__card-text">Улучшает восприятие английской речи на слух.</p>
-            <button className="game__card-button">Играть</button>
+            <NavLink to={'/audiocall'}><button className="game__card-button">Играть</button></NavLink>
           </div>
           <div className="game__card">
             <img className="game__card-img" src={game2} alt="game img"/>
             <h3 className="game__card-title">Спринт</h3>
             <p className="game__card-text">Учит быстро переводить с
               английского  на ваш родной язык. </p>
-            <button className="game__card-button">Играть</button>
+            <NavLink to={'/sprint'}><button className="game__card-button">Играть</button></NavLink>
           </div>
         </div>
 

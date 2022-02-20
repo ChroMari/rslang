@@ -17,7 +17,10 @@ const CurrentSprintWordSlice = createSlice({
         },
         removeCurrentSprintWord(state, action) {
             // @ts-ignore
-            state.currentSprintWord = action
+            state.currentSprintWord = {
+                wordTranslate: 'test',
+                word: 'test'
+            }
         }
     }
 })

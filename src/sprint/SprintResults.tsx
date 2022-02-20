@@ -10,6 +10,7 @@ import { addCurrentSprintWordTranslate } from '../redux/slices/sprintSlices/Curr
 import { addCurrentSprintScore } from '../redux/slices/sprintSlices/SprintScoreSlice';
 import { addCurrentSprintScoreStreak } from '../redux/slices/sprintSlices/CurrentSprintScoreStreakSlice';
 import { StoreType } from '../redux/store';
+import { NavLink } from 'react-router-dom';
 export const SprintResults = () => {
     const rightAnswers = useSelector((state:StoreType) => state.addSprintRightAnswers.sprintRightAnswers)
     const wrongAnswers = useSelector((state:StoreType) => state.addSprintWrongAnswers.sprintWrongAnswers)
@@ -17,11 +18,11 @@ export const SprintResults = () => {
     const dispatch = useDispatch()
 
     const onclickEndButton = () => {
-        dispatch(chooseDifficultyLevel(''))
         dispatch(removeSprintWords([]))
-        dispatch(removeCurrentSprintWord([]))
+        dispatch(removeCurrentSprintWord(''))
         dispatch(removeSprintRightAnswers([]))
         dispatch(removeSprintWrongAnswers([]))
+        dispatch(chooseDifficultyLevel(''))
         dispatch(toggleTime(60))
         dispatch(addCurrentSprintWordTranslate(''))
         dispatch(addCurrentSprintScore(0))
@@ -40,9 +41,9 @@ export const SprintResults = () => {
                     <div className='sprint__result__answers__block__item__answers__container'>
                         <div className='sprint__result__answers__block__item__answers__item'>
                             {rightAnswers.length > 0
-                                ? rightAnswers.map((item) => (
+                                ? rightAnswers.map((item, id) => (
                                 //@ts-ignore
-                                <div className='sprint__word'>{item.word} - {item.wordTranslate}</div>))
+                                <div className='sprint__word' key={id}>{item.word} - {item.wordTranslate}</div>))
                                 : <div className='sprint__word'>Нет неправильных ответов</div>}
                         </div>
                     </div>
@@ -52,15 +53,15 @@ export const SprintResults = () => {
                     <div className='sprint__result__answers__block__item__answers__container'>
                         <div className='sprint__result__answers__block__item__answers__item'>
                             {wrongAnswers.length > 0
-                                ? wrongAnswers.map((item) => (
+                                ? wrongAnswers.map((item, id) => (
                                     //@ts-ignore
-                                    <div className='sprint__word'>{item.word} - {item.wordTranslate}</div>))
+                                    <div className='sprint__word' key={id}>{item.word} - {item.wordTranslate}</div>))
                                 : <div className='sprint__word'>Нет неправильных ответов</div>}
                         </div>
                     </div>
                 </div>
             </div>
-            <button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button>
+            <NavLink to={'/'} style={{display: 'grid'}}><button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button></NavLink>
         </div>
     )
 }

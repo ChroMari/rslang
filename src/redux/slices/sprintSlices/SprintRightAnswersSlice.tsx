@@ -12,7 +12,7 @@ const SprintRightAnswerSlice = createSlice({
         },
         removeSprintRightAnswers(state, action) {
             // @ts-ignore
-            state.sprintRightAnswers = action
+            state.sprintRightAnswers = new Array()
         }
     }
 })
