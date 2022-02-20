@@ -58,6 +58,7 @@ const wordsSlice = createSlice({
     },
     extraReducers: {
         [fetchWords.pending.type]: (state) => {
+            state.error = null;
             state.status = 'pending';
         },
         [fetchWords.fulfilled.type]: (state, action) => {
@@ -68,16 +69,19 @@ const wordsSlice = createSlice({
             state.status = 'rejected';
         },
         [fetchWordsAuthorized.pending.type]: (state) => {
+            state.error = null;
             state.status = 'pending';
         },
         [fetchWordsAuthorized.fulfilled.type]: (state, action) => {
             state.status = 'fulfilled';
             state.wordsList = action.payload;
         },
-        [fetchWordsAuthorized.rejected.type]: (state) => {
+        [fetchWordsAuthorized.rejected.type]: (state, action) => {
             state.status = 'rejected';
+            state.error = action.payload;
         },
         [fetchHardWords.pending.type]: (state) => {
+            state.error = null;
             state.status = 'pending';
         },
         [fetchHardWords.fulfilled.type]: (state, action) => {

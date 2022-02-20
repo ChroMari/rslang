@@ -1,6 +1,7 @@
 import { URL_API_USERS, URL_API_WORDS } from '../constants/Url';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BOOK_WORDS_PER_PAGE } from '../constants/Book';
+import {closeUser} from "../redux/slices/userSlice";
 
 export const fetchWords = createAsyncThunk('words/fetchWords', async (_, { getState, rejectWithValue }) => {
     try {
@@ -18,7 +19,7 @@ export const fetchWords = createAsyncThunk('words/fetchWords', async (_, { getSt
 
 export const fetchWordsAuthorized = createAsyncThunk(
     'words/fetchWordsAuthorized',
-    async (_, { getState, rejectWithValue }) => {
+    async (_, { getState, rejectWithValue, dispatch }) => {
         try {
             const { book, user } = getState() as any;
 
@@ -38,14 +39,15 @@ export const fetchWordsAuthorized = createAsyncThunk(
 
             return result[0].paginatedResults;
         } catch (error: any) {
-            rejectWithValue(error.message);
+            dispatch(closeUser());
+            return rejectWithValue(error.message);
         }
     },
 );
 
 export const fetchHardWords = createAsyncThunk(
     'words/fetchWordsAuthorized',
-    async (_, { getState, rejectWithValue }) => {
+    async (_, { getState, rejectWithValue, dispatch }) => {
         try {
             const { user } = getState() as any;
 
@@ -65,7 +67,8 @@ export const fetchHardWords = createAsyncThunk(
 
             return result[0].paginatedResults;
         } catch (error: any) {
-            rejectWithValue(error.message);
+            dispatch(closeUser());
+            return rejectWithValue(error.message);
         }
     },
 );
