@@ -36,10 +36,9 @@ export const Audiocall = () => {
         removeAnswers()
         // @ts-ignore
         setRandomAnswers([currentSprintWord.wordTranslate, getRandomWord().wordTranslate, getRandomWord().wordTranslate, getRandomWord().wordTranslate])
+
         // @ts-ignore
         setRandomAnswers((prevState) => (shuffle(prevState)))
-        // @ts-ignore
-        // console.log([...new Set(randomAnswers)].length);
     }
 
     const removeAnswers = () => {
