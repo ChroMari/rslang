@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { StoreType } from './redux/store';
 import { SprintResults } from './sprint/SprintResults';
 import { Sprint } from './sprint/Sprint';
+import { Audiocall } from './components/audiocall/Audiocall';
 
 function App() {
     const currentTime = useSelector((state:StoreType) => state.toggleTime.currentTime)
@@ -22,7 +23,9 @@ function App() {
                 <Route path="/" element={<Layout />} />
                 <Route path="/book" element={<Book />} />
                 <Route path="/sprint" element={currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 30 ? <DifficultyLevel /> : <Sprint />)} />
+                <Route path="/audiocall" element={currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 30 ? <DifficultyLevel /> : <Audiocall />)} />
                 <Route path="/sprintFromPage" element={currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 1 ? <div>Loading...</div> : <Sprint />)} />
+                <Route path="/audiocallFromPage" element={currentTime === 0 ? <SprintResults/> : (wordsArray.length !== 1 ? <div>Loading...</div> : <Audiocall />)} />
             </Routes>
         </div>
     );

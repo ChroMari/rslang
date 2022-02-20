@@ -61,7 +61,7 @@ export const SprintResults = () => {
                     </div>
                 </div>
             </div>
-            <NavLink to={'/'}><button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button></NavLink>
+            <NavLink to={'/'} style={{display: 'grid'}}><button className='sprint-result-end-button' onClick={onclickEndButton}>Завершить игру</button></NavLink>
         </div>
     )
 }

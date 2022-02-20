@@ -4,6 +4,7 @@ import { chooseDifficultyLevel } from '../redux/slices/sprintSlices/DifficultyLe
 import { URL_API_WORDS } from '../constants/Url';
 import { addSprintWords } from '../redux/slices/sprintSlices/SprintSlice';
 import { StoreType } from '../redux/store';
+import { NavLink } from 'react-router-dom';
 
 export const DifficultyLevel = () => {
     const dispatch = useDispatch()
@@ -36,7 +37,7 @@ export const DifficultyLevel = () => {
 
     return (
         <div className={'difficulty-level-container'}>
-            <div className={'difficulty-level-title'}>Спринт</div>
+            <div className={'difficulty-level-title'}>Выберите раздел</div>
             <div className={'difficulty-level-description'}>выберите соответствует ли перевод заданному слову</div>
             <div className={'difficulty-level-button-block'}>
                 {buttons.map((item)=>(
@@ -49,7 +50,7 @@ export const DifficultyLevel = () => {
                     )
                 )}
             </div>
-            <button className={'close-button'}></button>
+            <NavLink to={'/'}><button className={'close-button'}></button></NavLink>
         </div>
     );
 };

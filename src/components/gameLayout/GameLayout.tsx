@@ -16,7 +16,7 @@ const GameLayout = () => {
             <img className="game__card-img" src={game1} alt="game img"/>
             <h3 className="game__card-title">Аудиовызов</h3>
             <p className="game__card-text">Улучшает восприятие английской речи на слух.</p>
-            <button className="game__card-button">Играть</button>
+            <NavLink to={'/audiocall'}><button className="game__card-button">Играть</button></NavLink>
           </div>
           <div className="game__card">
             <img className="game__card-img" src={game2} alt="game img"/>

@@ -34,13 +34,17 @@ const BookPagination = () => {
     const isLearnedPage = useSelector(bookSelectors.isLearnedPage);
     return (
         <div className="book-pagination">
-            <Button className="book-game__btn" disabled={isLearnedPage && section !== BOOK_HARD_SECTION}>
-                Аудиовызов
-            </Button>
+            <NavLink to={'/audiocallFromPage'}>
+                <Button className="book-game__btn" disabled={isLearnedPage && section !== BOOK_HARD_SECTION} onClick={onclickSprintFromPageHandler}>
+                    Аудиовызов
+                </Button>
+            </NavLink>
             {section !== BOOK_HARD_SECTION && <BookPaginationContainer />}
-            <NavLink to={'/sprintFromPage'}><Button className="book-game__btn" disabled={isLearnedPage && section !== BOOK_HARD_SECTION} onClick={onclickSprintFromPageHandler}>
+            <NavLink to={'/sprintFromPage'}>
+                <Button className="book-game__btn" disabled={isLearnedPage && section !== BOOK_HARD_SECTION} onClick={onclickSprintFromPageHandler}>
                 Спринт
-            </Button></NavLink>
+                </Button>
+            </NavLink>
 
         </div>
     );
