@@ -36,8 +36,10 @@ export const Sprint = () => {
   }
 
   const addRandomWordToCurrent = (word: any) => {
+
     dispatch(addCurrentSprintWordTranslate(word))
-    return (dispatch(addCurrentSprintWord(word)))
+    dispatch(addCurrentSprintWord(word))
+    return word.word
   }
 
   const [currentRandomTranslate, setCurrentRandomTranslate] = useState('')

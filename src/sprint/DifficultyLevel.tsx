@@ -18,7 +18,7 @@ export const DifficultyLevel = () => {
             .then((result) => {
                 dispatch(addSprintWords(result))
             })
-            .catch((err) => console.log('error'))
+            .catch((err) => console.log(`'error': ${err}`))
     }
 
     const getChunkOfWords = (level: string) => {

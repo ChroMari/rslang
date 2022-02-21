@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5b47e521.css",
+    "main.js": "/static/js/main.96538506.js",
+    "static/media/information.png": "/static/media/information.9b6231d0c736081e17a9.png",
+    "static/media/game-2.png": "/static/media/game-2.1afa9945dbf7ec64dede.png",
+    "static/media/game-1.png": "/static/media/game-1.c6a167f6f2cf8b878387.png",
+    "static/media/exit.svg": "/static/media/exit.dfd47c189e7c22e417c583e176488e7c.svg",
+    "static/media/audiobutton.svg": "/static/media/audiobutton.7fdfdde68d3bbd5e5542.svg",
+    "static/media/book-audio.svg": "/static/media/book-audio.72967ca1b2fed63191d4.svg",
+    "static/media/logo.svg": "/static/media/logo.567a24cb6dc3c23d8357eee9e3ed402a.svg",
+    "static/media/loading.svg": "/static/media/loading.3a9d0ec0aa9ab4bac76dbfae22f36aa6.svg",
+    "static/media/github.svg": "/static/media/github.c3696de2f06bd92183e69262a612bd9b.svg",
+    "index.html": "/index.html",
+    "static/media/close.svg": "/static/media/close.aa07facd8c599726fdaa4390181dbf6e.svg",
+    "main.5b47e521.css.map": "/static/css/main.5b47e521.css.map",
+    "main.96538506.js.map": "/static/js/main.96538506.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5b47e521.css",
+    "static/js/main.96538506.js"
+  ]
+}
