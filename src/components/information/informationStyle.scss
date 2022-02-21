@@ -1,0 +1,30 @@
+.information {
+  background-color: #4f4f4f;
+  color: #ffffff;
+  //padding: 45px 0;
+}
+
+.information__wrapper {
+  width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.information__title {
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 56px;
+  color: #FEFEFE;
+  margin-bottom: 40px;
+  margin-top: 45px;
+}
+
+.information__text {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #FFFFFF;
+  width: 350px;
+}

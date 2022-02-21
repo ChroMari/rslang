@@ -1,0 +1,19 @@
+.book-card-main {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.book-card-main-item {
+    &:first-child {
+        padding-bottom: 20px;
+
+        border-bottom: 1px solid var(--clr);
+    }
+    &:last-child {
+        margin: 20px 0;
+    }
+}
+
+.book-card-main-item__meaning {
+    margin-bottom: 15px;
+}
